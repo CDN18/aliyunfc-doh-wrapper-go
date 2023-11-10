@@ -113,5 +113,7 @@ func queryHandler(w http.ResponseWriter, req *http.Request) {
 		http.Error(w, "Failed to pack final response body", http.StatusInternalServerError)
 		return
 	}
+	w.Header().Set("Content-Type", "application/dns-message")
+	w.Header().Set("Content-Length", fmt.Sprintf("%d", len(bytes)))
 	w.Write(bytes)
 }
