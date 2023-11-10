@@ -6,11 +6,12 @@ import (
 	"io"
 	"net"
 	"net/http"
+	"os"
 
 	"github.com/miekg/dns"
 )
 
-const DOH_UPSTREAM = "https://223.5.5.5/dns-query"
+var DOH_UPSTREAM = os.Getenv("DOH_UPSTREAM")
 
 const (
 	fcRequestID          = "x-fc-request-id"
